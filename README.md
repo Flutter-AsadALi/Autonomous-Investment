@@ -14,7 +14,7 @@ This Flutter Android application efficiently retrieves and displays work order d
 
 ![Screenshot Splash Screen](https://github.com/Flutter-AsadALi/Autonomous-Investment/blob/main/assets/images/splsh.jpeg)
 ![Screenshot List of Products](https://github.com/Flutter-AsadALi/Autonomous-Investment/blob/main/assets/images/list_view.png)
-![Screenshot Products Details View](https://github.com/Flutter-AsadALi/Autonomous-Investment/blob/main/assets/images/details.jpeg)
+![Screenshot Products Details View](https://github.com/Flutter-AsadALi/Autonomous-Investment/blob/main/assets/images/details_view.png)
 
 
 ## Download APK
