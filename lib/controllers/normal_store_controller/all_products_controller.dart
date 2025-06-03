@@ -135,11 +135,12 @@ class AllProductsController with ChangeNotifier {
           await _productsHelper.getProductsDetails(context: context, pID: pId);
       if (response.data != null && response.isSuccess) {
         productDetailsModel = response.data!;
+        setLoadingDetails(false);
       }
     } catch (e) {
       // refreshController.loadFailed();
     } finally {
-      setLoadingDetails(false);
+
     }
   }
 

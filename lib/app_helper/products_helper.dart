@@ -20,7 +20,7 @@ class ProductsHelper {
       {required BuildContext context}) async {
     var resp = await _networkClient.get<ProductListModel>(
       'products',
-      queryParameters: {'': ''},
+      queryParameters: {},
       context: context,
     );
     if (resp.isSuccess && resp.rawData != null) {

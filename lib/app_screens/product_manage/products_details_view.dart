@@ -42,10 +42,6 @@ class _ProductsDetailsViewState extends State<ProductsDetailsView> {
           builder: (context, productProvider, child) {
             final product = productProvider.productDetailsModel;
 
-            /*if (productProvider.isLoadingDetails) {
-              return const ShimmerProductDetails(); // your shimmer loader
-            }*/
-
             return productProvider.isLoadingDetails
                 ? const ShimmerProductDetails()
                 : ListView(

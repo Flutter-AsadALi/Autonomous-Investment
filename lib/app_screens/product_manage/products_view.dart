@@ -40,142 +40,148 @@ class _AllProductsViewState extends State<AllProductsView> {
   Widget build(BuildContext context) {
     final navigationService =
         Provider.of<NavigationService>(context, listen: false);
-    return Scaffold(
-      appBar: PrimaryAppBar(
-        title: "Products view",
-        showBackArrowIcon: false,
-        onBackPressed: () {
-          // Navigator.pop(context);
-        },
-        actions: [
-          IconButton(
-              icon: Icon(
-                _isSearchActive
-                    ? Icons.search_off
-                    : PhosphorIcons.magnifying_glass_fill,
-                color: AppColors.white,
-              ),
-              onPressed: () {
-                setState(() {
-                  _isSearchActive = !_isSearchActive;
-                });
-              }),
-        ],
-      ),
-      body: Consumer<AllProductsController>(
-        builder: (context, productProvider, child) {
-          return productProvider.isLoading
-              ? const Center(child: ShimmerOutBoundList())
-              : SafeArea(
-                  child: Column(
-                  spacing: 2.h,
-                  children: [
-                    // SizedBox(height: 2.h,),
-                    _isSearchActive
-                        ? Container(
-                            padding: EdgeInsets.fromLTRB(2.h, 2.h, 2.h, 0),
-                            child: SearchWidget(
-                              hintText: "Search here...",
-                              searchController:
-                                  productProvider.searchController,
-                              fillColor: Colors.white.withOpacity(0.3),
-                              borderColor: Colors.blueAccent,
-                              iconColor: Colors.white,
-                              textColor: Colors.white,
-                              borderRadius: 4.h,
-                              prefixIcon: PhosphorIcons.magnifying_glass,
-                              clearIcon: PhosphorIcons.x_circle,
-                              iconSize: 24,
-                              useGradient: true,
-                              useGlassMorphism: true,
-                              blurStrength: 30.0,
-                              onChanged: (val) {
-                                if (val.isEmpty) {
+    return WillPopScope(
+      onWillPop: ()async{
+        return false;
+
+      },
+      child: Scaffold(
+        appBar: PrimaryAppBar(
+          title: "Products view",
+          showBackArrowIcon: false,
+          onBackPressed: () {
+            // Navigator.pop(context);
+          },
+          actions: [
+            IconButton(
+                icon: Icon(
+                  _isSearchActive
+                      ? Icons.search_off
+                      : PhosphorIcons.magnifying_glass_fill,
+                  color: AppColors.white,
+                ),
+                onPressed: () {
+                  setState(() {
+                    _isSearchActive = !_isSearchActive;
+                  });
+                }),
+          ],
+        ),
+        body: Consumer<AllProductsController>(
+          builder: (context, productProvider, child) {
+            return productProvider.isLoading
+                ? const Center(child: ShimmerOutBoundList())
+                : SafeArea(
+                    child: Column(
+                    spacing: 2.h,
+                    children: [
+                      // SizedBox(height: 2.h,),
+                      _isSearchActive
+                          ? Container(
+                              padding: EdgeInsets.fromLTRB(2.h, 2.h, 2.h, 0),
+                              child: SearchWidget(
+                                hintText: "Search here...",
+                                searchController:
+                                    productProvider.searchController,
+                                fillColor: Colors.white.withOpacity(0.3),
+                                borderColor: Colors.blueAccent,
+                                iconColor: Colors.white,
+                                textColor: Colors.white,
+                                borderRadius: 4.h,
+                                prefixIcon: PhosphorIcons.magnifying_glass,
+                                clearIcon: PhosphorIcons.x_circle,
+                                iconSize: 24,
+                                useGradient: true,
+                                useGlassMorphism: true,
+                                blurStrength: 30.0,
+                                onChanged: (val) {
+                                  if (val.isEmpty) {
+                                    productProvider.resetProducts();
+                                  } else {
+                                    productProvider.filterProducts(val);
+                                  }
+                                },
+                                clearPress: () {
                                   productProvider.resetProducts();
-                                } else {
-                                  productProvider.filterProducts(val);
-                                }
-                              },
-                              clearPress: () {
-                                productProvider.resetProducts();
-                              },
-                              gradient: LinearGradient(
-                                colors: [
-                                  AppColors.linearGradientLight,
-                                  AppColors.linearGradientDark
-                                ],
-                                begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter,
+                                },
+                                gradient: LinearGradient(
+                                  colors: [
+                                    AppColors.linearGradientLight,
+                                    AppColors.linearGradientDark
+                                  ],
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                ),
                               ),
-                            ),
-                          )
-                        : const SizedBox(),
-                    Expanded(
-                      child: SmartRefresher(
-                        controller: productProvider.refreshController,
-                        enablePullDown: true,
-                        enablePullUp: true,
-                        // Enable pull-up for testing onLoading
-                        onRefresh: () async {
-                          print("onRefresh triggered");
-                          double currentScrollOffset = productProvider
-                              .refreshController
-                              .position!
-                              .pixels; // Save current scroll offset
-                          await Provider.of<AllProductsController>(context, listen: false).getProductsList(context, isPag: false);
-                          productProvider.refreshController.refreshCompleted();
-                          WidgetsBinding.instance.addPostFrameCallback((_) {
-                            productProvider.refreshController.position
-                                ?.jumpTo(currentScrollOffset);
-                          });
-                        },
-                        onLoading: () async {
-                          print("onLoading triggered");
-                          double currentScrollOffset = productProvider
-                              .refreshController
-                              .position!
-                              .pixels; // Save current scroll offset
-                          await Provider.of<AllProductsController>(context, listen: false).getProductsList(context, isPag: true);
-
-                          productProvider.refreshController
-                              .loadComplete(); // Notify loading complete
-                          WidgetsBinding.instance.addPostFrameCallback((_) {
-                            productProvider.refreshController.position
-                                ?.jumpTo(currentScrollOffset);
-                          });
-                        },
-                        child: ListView.builder(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 4.w, vertical: 2.h),
-                          itemCount: productProvider.filteredProducts.length,
-                          itemBuilder: (context, index) {
-                            final product =
-                                productProvider.filteredProducts[index];
-                            List<String> imagesD = [];
-                            return ProductListTile(
-                              title: product.title ?? '',
-                              price: product.price ?? 0.0,
-                              stock: product.stock ?? 0,
-                              thumbnail: product.thumbnail ?? '',
-                              onTap: () {
-                                productProvider.getProductsDetails(context, product.id.toString());
-                                navigationService.navigateTo(RoutesName.detailsView, arguments: [product.id.toString()],);
-                                // Navigator.push(
-                                //   context,
-                                //   MaterialPageRoute(
-                                //     builder: (_) => ProductDetailsScreen(product: product),
-                                //   ),
-                                // );
-                              },
-                            );
-
+                            )
+                          : const SizedBox(),
+                      Expanded(
+                        child: SmartRefresher(
+                          controller: productProvider.refreshController,
+                          enablePullDown: true,
+                          enablePullUp: true,
+                          // Enable pull-up for testing onLoading
+                          onRefresh: () async {
+                            print("onRefresh triggered");
+                            double currentScrollOffset = productProvider
+                                .refreshController
+                                .position!
+                                .pixels; // Save current scroll offset
+                            await Provider.of<AllProductsController>(context, listen: false).getProductsList(context, isPag: false);
+                            productProvider.refreshController.refreshCompleted();
+                            WidgetsBinding.instance.addPostFrameCallback((_) {
+                              productProvider.refreshController.position
+                                  ?.jumpTo(currentScrollOffset);
+                            });
                           },
+                          onLoading: () async {
+                            print("onLoading triggered");
+                            double currentScrollOffset = productProvider
+                                .refreshController
+                                .position!
+                                .pixels; // Save current scroll offset
+                            await Provider.of<AllProductsController>(context, listen: false).getProductsList(context, isPag: true);
+
+                            productProvider.refreshController
+                                .loadComplete(); // Notify loading complete
+                            WidgetsBinding.instance.addPostFrameCallback((_) {
+                              productProvider.refreshController.position
+                                  ?.jumpTo(currentScrollOffset);
+                            });
+                          },
+                          child: ListView.builder(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 4.w, vertical: 2.h),
+                            itemCount: productProvider.filteredProducts.length,
+                            itemBuilder: (context, index) {
+                              final product =
+                                  productProvider.filteredProducts[index];
+                              List<String> imagesD = [];
+                              return ProductListTile(
+                                title: product.title ?? '',
+                                price: product.price ?? 0.0,
+                                stock: product.stock ?? 0,
+                                thumbnail: product.thumbnail ?? '',
+                                onTap: () {
+                                  productProvider.getProductsDetails(context, product.id.toString());
+                                  navigationService.navigateTo(RoutesName.detailsView, arguments: [product.id.toString()],);
+                                  // Navigator.push(
+                                  //   context,
+                                  //   MaterialPageRoute(
+                                  //     builder: (_) => ProductDetailsScreen(product: product),
+                                  //   ),
+                                  // );
+                                },
+                              );
+
+                            },
+                          ),
                         ),
-                      ),
-                    )
-                  ],
-                ));
-        },
+                      )
+                    ],
+                  ));
+          },
+        ),
       ),
     );
   }

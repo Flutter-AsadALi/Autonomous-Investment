@@ -1,17 +1,7 @@
 import 'dart:async';
-
 import 'package:extended_image/extended_image.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-// import 'package:image_fade/image_fade.dart';
-import 'package:inspireui/inspireui.dart' show SizeExtension, Skeleton;
-
-// import '../config.dart' show kAdvanceConfig;
-// import '../constants.dart' show kCacheImageWidth, kEmptyColor, kIsWeb;
-// import '../tools.dart';
-
-// ignore: camel_case_types
 enum kSize { small, medium, large }
 
 class ImageResize extends StatelessWidget {
@@ -46,9 +36,8 @@ class ImageResize extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var width = this.width ?? 300;
-    // var ratioImage = kAdvanceConfig.ratioProductImage;
-    var height = this.height ?? width * width;
+    final imgWidth = width ?? 300.0;
+    final imgHeight = height ?? imgWidth;
 
     if (url?.isEmpty ?? true) {
       return FutureBuilder<bool>(
@@ -59,43 +48,41 @@ class ImageResize extends StatelessWidget {
           return AnimatedSwitcher(
             duration: const Duration(milliseconds: 500),
             child: showSkeleton
-                ? Skeleton(
-                    width: width,
-                    height: height,
-                  )
+                ? Container(
+              width: imgWidth,
+              height: imgHeight,
+              color: Colors.grey[300],
+            )
                 : SizedBox(
-                    width: width,
-                    height: height,
-                    child: const Icon(Icons.error_outline),
-                  ),
+              width: imgWidth,
+              height: imgHeight,
+              child: const Icon(Icons.error_outline),
+            ),
           );
         },
       );
     }
 
-    final cacheWidth = (this.width != null && this.width! > 0)
-        ? (this.width! * 2.5).toInt()
-        : 700;
+    final cacheWidth =
+    (this.width != null && this.width! > 0) ? (this.width! * 2.5).toInt() : 700;
 
     final image = ExtendedImage.network(
       url!,
-      // isResize ? ImageTools.formatImage(url, size)! : url!,
-
-      width: width,
-      height: height,
+      width: imgWidth,
+      height: imgHeight,
       fit: fit,
       cache: true,
       timeRetry: const Duration(milliseconds: 500),
       clearMemoryCacheWhenDispose: true,
-      cacheWidth: kIsWeb ? null : cacheWidth,
+      cacheWidth: cacheWidth,
       enableLoadState: false,
       alignment: alignmentImage ??
           Alignment(
             (offset >= -1 && offset <= 1)
                 ? offset
                 : (offset > 0)
-                    ? 1.0
-                    : -1.0,
+                ? 1.0
+                : -1.0,
             0.0,
           ),
       loadStateChanged: (ExtendedImageState state) {
@@ -104,33 +91,20 @@ class ImageResize extends StatelessWidget {
           case LoadState.loading:
             widget = hidePlaceHolder
                 ? const SizedBox()
-                : Skeleton(
-                    width: width,
-                    height: height,
-                  );
+                : Container(
+              width: imgWidth,
+              height: imgHeight,
+              color: Colors.grey[300],
+            );
             break;
           case LoadState.completed:
             return state.completedWidget;
-          // return ImageFade(
-          //   image: state.imageProvider,
-          //   width: width,
-          //   height: height,
-          //   fit: fit ?? BoxFit.scaleDown,
-          //   alignment: Alignment(
-          //     (offset >= -1 && offset <= 1)
-          //         ? offset
-          //         : (offset > 0)
-          //             ? 1.0
-          //             : -1.0,
-          //     0.0,
-          //   ),
-          //   duration: const Duration(milliseconds: 250),
-          // );
           case LoadState.failed:
             widget = Container(
-              width: width,
-              height: height,
-              color: const Color(0x0D000000),
+              width: imgWidth,
+              height: imgHeight,
+              color: Colors.black12,
+              child: const Icon(Icons.broken_image),
             );
             break;
         }

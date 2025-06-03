@@ -5,14 +5,12 @@ This Flutter Android application efficiently retrieves and displays work order d
 ## Features
 
 - **Autonomous Investment:**
-  - Project ID
-  - Work Order
-  - Area
-  - Scheduled Date
+  - List of Products
+  - Product Details View
   - State
 ## Screenshots
 
-![Screenshot Splash Screen](https://github.com/Flutter-AsadALi/Autonomous-Investment/blob/main/assets/images/splsh.jpeg)
+![Screenshot Splash Screen](https://github.com/Flutter-AsadALi/Autonomous-Investment/blob/main/assets/images/splash.png)
 ![Screenshot List of Products](https://github.com/Flutter-AsadALi/Autonomous-Investment/blob/main/assets/images/list_view.png)
 ![Screenshot Products Details View](https://github.com/Flutter-AsadALi/Autonomous-Investment/blob/main/assets/images/details_view.png)
 
