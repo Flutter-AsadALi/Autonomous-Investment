@@ -20,7 +20,7 @@ This Flutter Android application is built for **Autonomous Investment** to manag
 
 ## Download APK
 
-You can download the APK file for the app here: [Download App APK](https://github.com/Flutter-AsadALi/Autonomous-Investment/blob/main/assets/images/flutter-app.apk)
+You can download the APK file for the app here: [Download App APK](https://github.com/Flutter-AsadALi/Autonomous-Investment/blob/main/assets/images/app-release.apk)
 ## Requirements
 
 - Flutter version greater than 3.10
