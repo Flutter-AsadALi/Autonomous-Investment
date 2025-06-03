@@ -1,13 +1,16 @@
-# Flutter Android Work Orders Details List App
+# Flutter Autonomous Investment App
 
-This Flutter Android application efficiently retrieves and displays work order details on mobile devices, providing a user-friendly interface for accessing work order information.
+This Flutter Android application is built for **Autonomous Investment** to manage and display product listings efficiently. It fetches product data using RESTful APIs, supports smooth navigation, and provides a clean user interface for mobile devices.
 
 ## Features
 
 - **Autonomous Investment:**
-  - List of Products
-  - Product Details View
-  - State
+    - Display a list of products
+    - Tap any product to view detailed information
+    - Data fetched once and paginated on the **client side**
+    - Splash screen and responsive UI across screen sizes
+    - Robust error handling and loading indicators
+  
 ## Screenshots
 
 ![Screenshot Splash Screen](https://github.com/Flutter-AsadALi/Autonomous-Investment/blob/main/assets/images/splash.png)
@@ -39,10 +42,15 @@ You can download the APK file for the app here: [Download App APK](https://githu
 
 ## Technologies Used
 
-- **Language:** Flutter, Dart, Java/Kotlin
+- **Language:** Flutter, Dart
 - **Data Retrieval:** RESTful APIs, JSON parsing
-- **Storage:** Local SharedPreferences for caching
-- **Components:** ListView.separated, Provider, etc.
+- **Components:**  ListView.separated, Card, GestureDetector, etc.
+- **Networking:** Dio (REST API handling)
+- **State Management:** Provider
+- **Networking:** Dio (REST API handling)
+
+
+
 
 ## Implementation Considerations
 
@@ -51,7 +59,6 @@ You can download the APK file for the app here: [Download App APK](https://githu
 - **Scalability:** The app ensures scalability by employing pagination or lazy loading mechanisms, allowing the retrieval of large volumes of Products in batches. This approach maintains app performance and responsiveness, even with extensive data sets.
 
 - **Error Handling:** A robust error handling system is integrated to proficiently manage various scenarios, including network disruptions, server-side issues, or data inconsistencies. Clear and user-friendly error messages are displayed, facilitating better comprehension and user experience.
-
 
 ## App Design Decisions
 
@@ -64,6 +71,10 @@ You can download the APK file for the app here: [Download App APK](https://githu
 ## Performance Considerations
 
 - **Optimization:** Data caching, minimal network calls, and efficient rendering techniques are employed to optimize performance and reduce app loading times.
+- 
+## Final Notes
+
+- **Final Notes:** This app demonstrates clean Flutter development practices tailored to real-world use in product management. Built with scalability, performance, and code clarity in mind, it is suited for enterprise use at Autonomous Investment.
 
 
 
