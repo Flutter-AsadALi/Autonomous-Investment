@@ -37,7 +37,7 @@ You can download the APK file for the app here: [Download App APK](https://githu
 
 ## Usage
 
-1. Launch the app to access the list of work orders.
+1. Launch the app to access the list of Products
 2. Tap on a card to view detailed information.
 
 ## Technologies Used
