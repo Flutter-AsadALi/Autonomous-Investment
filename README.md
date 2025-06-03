@@ -4,7 +4,7 @@ This Flutter Android application efficiently retrieves and displays work order d
 
 ## Features
 
-- **Display Work Order Details:**
+- **Autonomous Investment:**
   - Project ID
   - Work Order
   - Area
@@ -31,7 +31,7 @@ You can download the APK file for the app here: [Download App APK](https://githu
 ## Installation
 
 1. Clone the repository:
-   git clone https://github.com/Flutter-AsadALi/work_order_app_flutter
+   git clone https://github.com/Flutter-AsadALi/Autonomous-Investment
 2. Open the project in Android Studio.
 3. Run the command: `flutter pub get`.
 4. Execute `flutter run` and select the desired device.
@@ -46,17 +46,16 @@ You can download the APK file for the app here: [Download App APK](https://githu
 - **Language:** Flutter, Dart, Java/Kotlin
 - **Data Retrieval:** RESTful APIs, JSON parsing
 - **Storage:** Local SharedPreferences for caching
-- **Components:** ListView.separated, GetX, etc.
+- **Components:** ListView.separated, Provider, etc.
 
 ## Implementation Considerations
 
 - **API Calls:** The app efficiently fetches data using API calls, enhancing performance and data retrieval. Within Flutter, the UI and state management follow the MVC (Model-View-Controller) model, ensuring effective data flow and rendering for a responsive user interface.
 
-- **Scalability:** The app ensures scalability by employing pagination or lazy loading mechanisms, allowing the retrieval of large volumes of work orders in batches. This approach maintains app performance and responsiveness, even with extensive data sets.
+- **Scalability:** The app ensures scalability by employing pagination or lazy loading mechanisms, allowing the retrieval of large volumes of Products in batches. This approach maintains app performance and responsiveness, even with extensive data sets.
 
 - **Error Handling:** A robust error handling system is integrated to proficiently manage various scenarios, including network disruptions, server-side issues, or data inconsistencies. Clear and user-friendly error messages are displayed, facilitating better comprehension and user experience.
 
-- **Offline Handling:** The app can function without an internet connection. However, to access the work order list, the app needs initial data retrieval, allowing it to store essential information locally. Once fetched, this data enables the app to operate offline, providing access without an internet connection.
 
 ## App Design Decisions
 
@@ -64,7 +63,7 @@ You can download the APK file for the app here: [Download App APK](https://githu
 
 - **Architecture:** The app follows a clean architecture pattern MVC, separating concerns and promoting maintainability and scalability.
 
-- **Third-party Libraries:** Notable third-party libraries like Dio for network requests and GetX for state management are used, enhancing the app's functionality and performance.
+- **Third-party Libraries:** Notable third-party libraries like Dio for network requests and Provider for state management are used, enhancing the app's functionality and performance.
 
 ## Performance Considerations
 

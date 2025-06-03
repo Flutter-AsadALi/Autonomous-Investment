@@ -6,12 +6,8 @@ class Assets {
   static const String fontsNexaRegular = 'assets/fonts/NexaRegular.otf';
   static const String fontsNexaXBold = 'assets/fonts/NexaXBold.otf';
   static const String iconsAppLogo = 'assets/icons/app_logo.png';
-  static const String imagesAppBar = 'assets/images/app_bar.png';
-  static const String imagesBgImage = 'assets/images/bg_image.png';
   static const String imagesDetails = 'assets/images/details.jpeg';
   static const String imagesList = 'assets/images/list.jpeg';
-  static const String imagesSplashScreen = 'assets/images/splash_screen.png';
   static const String imagesSplsh = 'assets/images/splsh.jpeg';
-  static const String imagesVideo = 'assets/images/video.mp4';
 
 }
