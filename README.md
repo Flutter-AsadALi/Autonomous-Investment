@@ -71,10 +71,9 @@ You can download the APK file for the app here: [Download App APK](https://githu
 ## Performance Considerations
 
 - **Optimization:** Data caching, minimal network calls, and efficient rendering techniques are employed to optimize performance and reduce app loading times.
-- 
 ## Final Notes
 
-- **Final Notes:** This app demonstrates clean Flutter development practices tailored to real-world use in product management. Built with scalability, performance, and code clarity in mind, it is suited for enterprise use at Autonomous Investment.
+- **Notes:** This app demonstrates clean Flutter development practices tailored to real-world use in product management. Built with scalability, performance, and code clarity in mind, it is suited for enterprise use at Autonomous Investment.
 
 
 
