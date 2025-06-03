@@ -12,12 +12,10 @@ This Flutter Android application efficiently retrieves and displays work order d
   - State
 ## Screenshots
 
-![Screenshot Splash Screen](https://github.com/Flutter-AsadALi/work_order_app_flutter/blob/main/assets/images/splsh.jpeg)
-![Screenshot List of Work Order](https://github.com/Flutter-AsadALi/work_order_app_flutter/blob/main/assets/images/list.jpeg)
-![Screenshot Work Order Details View](https://github.com/Flutter-AsadALi/work_order_app_flutter/blob/main/assets/images/details.jpeg)
+![Screenshot Splash Screen](https://github.com/Flutter-AsadALi/Autonomous-Investment/blob/main/assets/images/splsh.jpeg)
+![Screenshot List of Products](https://github.com/Flutter-AsadALi/Autonomous-Investment/blob/main/assets/images/details_view.png)
+![Screenshot Products Details View](https://github.com/Flutter-AsadALi/Autonomous-Investment/blob/main/assets/images/details.jpeg)
 
-## Video
-[![Video Demo]((https://github.com/Flutter-AsadALi/work_order_app_flutter/blob/main/assets/images/list.jpeg))](https://github.com/Flutter-AsadALi/work_order_app_flutter/blob/main/assets/images/video.mp4)
 
 ## Download APK
 
