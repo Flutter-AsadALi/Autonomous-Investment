@@ -6,8 +6,9 @@ class Assets {
   static const String fontsNexaRegular = 'assets/fonts/NexaRegular.otf';
   static const String fontsNexaXBold = 'assets/fonts/NexaXBold.otf';
   static const String iconsAppLogo = 'assets/icons/app_logo.png';
-  static const String imagesDetails = 'assets/images/details.jpeg';
-  static const String imagesList = 'assets/images/list.jpeg';
-  static const String imagesSplsh = 'assets/images/splsh.jpeg';
+  static const String imagesAppRelease = 'assets/images/app-release.apk';
+  static const String imagesDetailsView = 'assets/images/details_view.png';
+  static const String imagesListView = 'assets/images/list_view.png';
+  static const String imagesSplash = 'assets/images/splash.png';
 
 }
