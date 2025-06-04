@@ -13,14 +13,14 @@ This Flutter Android application is built for **Autonomous Investment** to manag
   
 ## Screenshots
 
-![Screenshot Splash Screen](https://github.com/Flutter-AsadALi/Autonomous-Investment/blob/main/assets/images/splash.png)
+![Screenshot Splash Screen](https://github.com/Flutter-AsadALi/Autonomous-Investment/blob/main/assets/images/splash_1.png)
 ![Screenshot List of Products](https://github.com/Flutter-AsadALi/Autonomous-Investment/blob/main/assets/images/list_view.png)
 ![Screenshot Products Details View](https://github.com/Flutter-AsadALi/Autonomous-Investment/blob/main/assets/images/details_view.png)
 
 
 ## Download APK
 
-You can download the APK file for the app here: [Download App APK](https://github.com/Flutter-AsadALi/Autonomous-Investment/blob/main/assets/images/app-release.apk)
+You can download the APK file for the app here: [Download App APK](https://github.com/Flutter-AsadALi/Autonomous-Investment/blob/main/assets/images/app-release_1.apk)
 ## Requirements
 
 - Flutter version greater than 3.10
